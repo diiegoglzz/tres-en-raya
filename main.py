@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+import random
 
 # Variables del juego
 player = 'X'
@@ -42,6 +43,8 @@ def reset_game():
             buttons[row][col]['text'] = ''
             buttons[row][col]['bg'] = '#263238' 
 
+    coin_flip()
+
 
 root = tk.Tk()
 root.title("Tres en linea")
@@ -62,4 +65,12 @@ for row in range(3):
 reset_button = tk.Button(root, text='Reiniciar', font='normal 15 bold', command=reset_game, bg='#546E7A', fg='white')
 reset_button.place(relx=0.5, rely=0.9, anchor='center')
 
+def coin_flip():
+    global player
+    resultado = random.choice(['X', 'O'])
+    player = resultado
+    messagebox.showinfo("Cara o cruz", f'Empieza el juego el jugador {player}')
+
+
+coin_flip()
 root.mainloop()
